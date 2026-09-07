@@ -1,92 +1,18 @@
 <!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>길드전 주간 운영표 · 295 서버 | 6ON 공략</title>
-  <style>
-    :root{--bg:#0b1020;--panel:#121a2f;--panel2:#17223d;--text:#eef3ff;--muted:#aab7d4;--line:#2a385d;--blue:#8db3ff;--gold:#ffd76a;--green:#79e2ad;--purple:#c6b7ff;--red:#ff9a9a;--shadow:0 18px 50px rgba(0,0,0,.28)}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;min-height:100vh;font-family:Inter,Pretendard,"Noto Sans KR",system-ui,sans-serif;background:radial-gradient(circle at top left,rgba(91,126,255,.18),transparent 30%),linear-gradient(180deg,#0a0f1d 0%,#0d1426 100%);color:var(--text)}
-    .wrap{width:min(1500px,96vw);margin:0 auto;padding:28px 0 40px}.hero{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:0 4px 18px}.hero h1{margin:0;font-size:clamp(28px,4vw,48px);letter-spacing:-.04em}.hero p{margin:8px 0 0;color:var(--muted);font-size:15px}.badge{flex:none;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#dce8ff;padding:10px 14px;border-radius:999px;font-size:13px;white-space:nowrap}
-    .day-rule{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin-bottom:16px;padding:14px 17px;border:1px solid #4d4b65;border-radius:16px;background:linear-gradient(100deg,rgba(255,215,106,.14),rgba(23,34,61,.9))}.day-rule strong{color:var(--gold);font-size:17px}.day-rule p{margin:0;color:#dce8ff;font-size:14px}.day-rule em{font-style:normal;color:var(--gold);font-weight:800}
-    .table-shell{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:rgba(13,19,36,.92);box-shadow:var(--shadow)}.schedule{display:grid;grid-template-columns:105px minmax(225px,.86fr) minmax(300px,1.1fr) minmax(370px,1.42fr)}.row{display:contents}.cell{padding:18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}.schedule>.cell:nth-child(4n),.row>.cell:last-child{border-right:none}.row:last-child>.cell{border-bottom:none}.head{background:linear-gradient(180deg,#1a2747,#16223e);font-weight:800;color:white;position:sticky;top:0;z-index:2}.day{font-size:18px;font-weight:900;letter-spacing:-.03em}.day small{display:block;margin-top:5px;color:var(--muted);font-size:12px;font-weight:700}.mon{color:#8ec5ff}.tue{color:#a8dcff}.wed{color:#c6b7ff}.thu{color:#ffb6d5}.fri{color:#ffd76a}.sat{color:#ff9d8f}.sun{color:#9fe1b7}
-    .items{display:flex;flex-wrap:wrap;gap:8px}.chip{display:inline-flex;align-items:center;min-height:31px;padding:6px 10px;border-radius:999px;background:#1c2949;border:1px solid #30436e;color:#dce8ff;font-size:13px;line-height:1.2}.prep{display:grid;gap:9px;line-height:1.55;font-size:14px}.prep .today{color:var(--gold);font-weight:800}.prep .save{color:#cbd7ee}.timeline{display:grid;gap:7px}.time{display:grid;grid-template-columns:108px 1fr auto;gap:9px;align-items:center;padding:8px 10px;border-radius:12px;background:#131d35;border:1px solid #233253;font-size:13px}.time strong{color:#b9caf0;white-space:nowrap}.time span{color:#dce8ff}.time small{display:none;color:#0e1a13;background:var(--green);padding:2px 6px;border-radius:999px;font-weight:900;font-size:11px;white-space:nowrap}.time.match{border-color:#4c916b;background:linear-gradient(90deg,rgba(33,98,67,.54),#131d35)}.time.match strong{color:var(--green)}.time.match small{display:inline}.day-split{grid-column:1/-1;margin:1px 0 -1px;padding:2px 0 0;border-top:1px dashed #405070;color:#8494b5;font-size:11px;font-weight:800;letter-spacing:.06em}.legend{display:flex;flex-wrap:wrap;gap:10px 16px;color:var(--muted);font-size:12px;margin-top:14px;padding:0 4px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--green);margin-right:5px}.source{margin:22px 4px 0;color:var(--muted);font-size:12px;line-height:1.6}
-    @media(max-width:980px){.hero{align-items:flex-start;flex-direction:column}.table-shell{overflow:visible;border:none;background:transparent;box-shadow:none}.schedule{display:block}.head{display:none}.row{display:grid;margin-bottom:14px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(16,24,45,.96);box-shadow:0 12px 32px rgba(0,0,0,.18)}.row .cell{border-right:none;border-bottom:1px solid var(--line);padding:15px 16px}.row .cell:last-child{border-bottom:none}.row .cell:before{display:block;margin-bottom:8px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#7f91b8}.row .day{font-size:22px;background:linear-gradient(180deg,#182744,#14203a)}.row .day:before{content:"요일"}.row .prepare:before{content:"이거는 아껴둬요!!"}.row .survival:before{content:"서바이벌 배틀과 동시 진행(추천)"}.time{grid-template-columns:112px 1fr auto}}
-    @media(max-width:560px){.wrap{width:min(94vw,760px);padding-top:20px}.badge{display:none}.day-rule{grid-template-columns:1fr;gap:5px}.time{grid-template-columns:104px 1fr}.time small{grid-column:2;justify-self:start}.chip{font-size:12.5px}}
-    .cell-title{margin:0 0 10px;font-size:14px;font-weight:800;color:#dce8ff}.timeline .time{grid-template-columns:minmax(0,1fr);gap:5px}.timeline .time strong{white-space:normal;line-height:1.5}.timeline .time span{line-height:1.5}.none{color:var(--muted);font-size:14px}
-    .main .prep{margin-top:12px}
-    .back{display:inline-flex;margin:0 4px 18px;color:var(--muted);font-size:14px;text-decoration:none}.back:hover,.back:focus-visible{color:var(--text);text-decoration:underline}
-  </style>
-</head>
-<body>
-  <main class="wrap">
-    <a class="back" href="./">← 공략 아카이브로</a>
-    <section class="hero">
-      <div><h1>길드전 주간 운영표</h1><p>6ON · 295 서버 서바이벌 배틀 시간표 기준</p></div>
-      <div class="badge">KST 기준</div>
-    </section>
-
-    <section class="day-rule" aria-label="길드전 날짜 기준">
-      <strong>길드전 하루의 기준</strong>
-      <p><em>각 요일 오전 11:00 시작</em> → <em>다음 날 오전 11:00 종료</em><br>시간표의 초록 칸은 길드전과 서바이벌 배틀을 함께 진행하기 좋은 시간입니다.</p>
-    </section>
-
-    <section class="table-shell">
-      <div class="schedule">
-        <div class="cell head">요일</div><div class="cell head">✅ 길드전</div><div class="cell head">📝 이거는 아껴둬요!!</div><div class="cell head">⏰ 서바이벌 배틀과 동시 진행(추천)</div>
-
-        <section class="row">
-          <div class="cell day mon">월요일<small>서바이벌 1일차</small></div>
-          <div class="cell main"><h2 class="cell-title">월요일 길드전</h2><div class="items"><span class="chip">체력 소모</span><span class="chip">까마귀 정수 · 열매 사용</span><span class="chip">자원 수집</span><span class="chip">항독소 사용(영웅 레벨업)</span><span class="chip">팔콘 퀘스트 완료하기</span></div><div class="prep"><div class="today">⭐ 팔콘 퀘스트 보상 수령</div></div></div>
-          <div class="cell prepare"><div class="prep"><div>🏢 완공 된 건물이 있다면, 포장은 화요일에 뜯기!!</div><div>🐦‍⬛ 까마귀 장비 상자 모아두기 (오픈 ❌) → 수요일</div></div></div>
-          <div class="cell survival"><div class="timeline"><div class="time match"><strong>월요일 23:00 ~ 화요일 03:00</strong><span>까마귀 정수 · 열매 사용</span></div><div class="time match"><strong>화요일 03:00 ~ 화요일 07:00</strong><span>항독소 사용(영웅 레벨업)</span></div></div></div>
-        </section>
-
-        <section class="row">
-          <div class="cell day tue">화요일<small>서바이벌 2일차</small></div>
-          <div class="cell main"><h2 class="cell-title">화요일 길드전</h2><div class="items"><span class="chip">건물 완료·가속</span><span class="chip">건물 전투력</span><span class="chip">UR 비밀 작전</span><span class="chip">UR 마차</span><span class="chip">생존자 모집</span></div><div class="prep"><div class="today">⭐ 보관한 건물 완료 보상 수령</div></div></div>
-          <div class="cell prepare"><div class="prep"><div>🦅 팔콘 퀘스트는 완료만 하고 수요일에 수령</div><div>🐦‍⬛ 까마귀 장비 상자는 수요일까지 보관</div><div>💉 영웅 재료는 목요일까지 보관</div></div></div>
-          <div class="cell survival"><div class="timeline"><div class="time match"><strong>화요일 15:00 ~ 화요일 19:00</strong><span>건설 가속 사용 · 건물 전투력 올리기</span></div></div></div>
-        </section>
-
-        <section class="row">
-          <div class="cell day wed">수요일<small>서바이벌 3일차</small></div>
-          <div class="cell main"><h2 class="cell-title">수요일 길드전</h2><div class="items"><span class="chip">팔콘 퀘스트</span><span class="chip">까마귀 장비 상자</span><span class="chip">연구 두루마리</span><span class="chip">연구 가속</span><span class="chip">기술 전투력</span></div><div class="prep"><div class="today">⭐ 연구 완료·가속·장비 상자 사용</div></div></div>
-          <div class="cell prepare"><div class="prep"><div>🐦‍⬛ 까마귀 정수·열매는 월요일까지 보관</div><div>💉 항독소·영웅 조각은 목요일까지 보관</div></div></div>
-          <div class="cell survival"><div class="timeline"><div class="time match"><strong>수요일 19:00 ~ 수요일 23:00</strong><span>연구 가속 사용 · 기술 전투력 올리기</span></div></div></div>
-        </section>
-
-        <section class="row">
-          <div class="cell day thu">목요일<small>서바이벌 4일차</small></div>
-          <div class="cell main"><h2 class="cell-title">목요일 길드전</h2><div class="items"><span class="chip">항독소</span><span class="chip">영웅 조각</span><span class="chip">영웅 모집</span><span class="chip">영웅 스킬</span><span class="chip">팔콘 퀘스트</span></div><div class="prep"><div class="today">⭐ 영웅 조각·항독소·모집권·스킬 배지 사용</div></div></div>
-          <div class="cell prepare"><div class="prep"><div>🦅 팔콘 퀘스트는 완료만 하고 금요일에 수령</div><div>🪖 낮은 티어 병사는 금요일 승급용으로 준비</div></div></div>
-          <div class="cell survival"><div class="timeline"><div class="time match"><strong>목요일 23:00 ~ 금요일 03:00</strong><span>항독소 사용(영웅 레벨업) · 영웅 모집</span></div></div></div>
-        </section>
-
-        <section class="row">
-          <div class="cell day fri">금요일<small>서바이벌 5일차</small></div>
-          <div class="cell main"><h2 class="cell-title">금요일 길드전</h2><div class="items"><span class="chip">건설 가속</span><span class="chip">연구 가속</span><span class="chip">병사 훈련·승급</span><span class="chip">훈련 가속</span><span class="chip">팔콘 퀘스트</span></div><div class="prep"><div class="today">⭐ 건설·연구·훈련 가속을 테마에 맞춰 분산 사용</div><div>🦅 팔콘 퀘스트 보상 수령</div></div></div>
-          <div class="cell prepare"><div class="prep"><div>🛡️ 토요일 전 보호막·병원 여유 확인</div></div></div>
-          <div class="cell survival"><div class="timeline"><div class="time match"><strong>금요일 11:00 ~ 금요일 15:00</strong><span>연구 가속 사용 · 기술 전투력 올리기</span></div><div class="time match"><strong>금요일 23:00 ~ 토요일 03:00</strong><span>건설 가속 사용 · 건물 전투력 올리기</span></div><div class="time match"><strong>토요일 03:00 ~ 토요일 07:00</strong><span>병사 훈련·승급 · 훈련 가속 사용</span></div><div class="time match"><strong>토요일 07:00 ~ 토요일 11:00</strong><span>연구 가속 사용 · 기술 전투력 올리기</span></div></div></div>
-        </section>
-
-        <section class="row">
-          <div class="cell day sat">토요일<small>서바이벌 6일차</small></div>
-          <div class="cell main"><h2 class="cell-title">토요일 길드전</h2><div class="items"><span class="chip">보호막</span><span class="chip">UR 비밀 작전·마차</span><span class="chip">치료 가속</span><span class="chip">건설·연구·훈련 가속</span><span class="chip">길드 콜 교전</span></div><div class="prep"><div class="today">⭐ 길드전 상대와의 교전은 길드 콜 우선</div><div>🛡️ 방어가 어렵거나 미접속 예정이면 보호막 사용</div><div>⚕️ 치료 가속은 실제 교전 후 필요한 만큼만 사용</div></div></div>
-          <div class="cell prepare"><span class="none">—</span></div>
-          <div class="cell survival"><div class="timeline"><div class="time match"><strong>토요일 19:00 ~ 토요일 23:00</strong><span>건설 가속 사용</span></div><div class="time match"><strong>토요일 23:00 ~ 일요일 03:00</strong><span>훈련 가속 사용</span></div><div class="time match"><strong>일요일 03:00 ~ 일요일 07:00</strong><span>연구 가속 사용</span></div></div></div>
-        </section>
-
-        <section class="row">
-          <div class="cell day sun">일요일<small>서바이벌 7일차</small></div>
-          <div class="cell main"><h2 class="cell-title">일요일 길드전</h2><div class="items"><span class="chip">길드전 없음</span><span class="chip">다음 주 준비</span></div></div>
-          <div class="cell prepare"><div class="prep"><div class="today">⭐ 월요일용 팔콘 퀘스트를 완료하고 보상은 받지 않기</div><div>🐦‍⬛ 까마귀 정수·열매·체력 비축</div><div>🏢 화요일 완료용 건물은 미리 시작</div></div></div>
-          <div class="cell survival"><span class="none">길드전 없음 · 동시 진행 추천 시간 없음</span></div>
-        </section>
-      </div>
-    </section>
-
-    <div class="legend"><span><i class="dot"></i>길드전과 서바이벌 동시 진행 추천</span><span>시간은 모두 한국 시간(KST)</span><span>295 서버 게임 내 달력 1~7일차 자료 기준</span></div>
-  </main>
-</body>
-</html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>길드전 요일별 준비·사용 가이드 | 6ON 공략</title>
+<link rel="stylesheet" href="./_next/static/css/index.C7BXvURc.css">
+<style>.brand{text-decoration:none}.guild-day .guide-list{list-style:disc;padding-left:1.4em}.guild-day .guide-list li{font-size:16px;line-height:1.8;margin:14px 0}.guild-day .bonus{display:block;color:var(--muted);font-size:14px;line-height:1.7;margin-top:5px;font-weight:400}.guild-day .period{color:var(--muted);font-size:14px}.guild-day h3{color:var(--gold);font-size:16px;margin-top:24px}.guild-day .save li{font-size:15px}.guild-day .optional{color:var(--muted);font-size:14px;line-height:1.7}.guild-day .section-heading h2{line-height:1.35}</style>
+</head><body><main>
+<header class="site-header"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">LA</span><span><b>LAST ASYLUM</b><small>6ON GUILD GUIDE</small></span></a><a class="home-link" href="./">← 공략 목록</a></header>
+<article class="guide-content">
+<div class="article-heading"><span class="eyebrow">ALLIANCE DUEL · 6ON GUILD</span><h1>길드전 요일별 준비·사용 가이드</h1><p>요일에 맞춰 재료를 쓰고, 다음 날 필요한 것은 남겨두세요.</p></div>
+<section class="alert-card"><span class="alert-label">하루의 기준</span><strong>각 요일 오전 11시부터 다음 날 오전 11시 전까지</strong><p>모든 시간은 295 서버·한국 시간 기준입니다. 할 일 아래의 작은 시간 안내는 서바이벌 배틀 점수도 함께 챙기기 위한 추천입니다. 재료 사용 전 두 이벤트의 점수 항목을 각각 확인하세요.</p></section>
+<section class="step-section guild-day"><div class="section-heading"><span>01</span><h2>월요일 · 까마귀 성장과 채집</h2></div><p class="period">월요일 11:00 ~ 화요일 11:00 전까지</p><h3>할 일</h3><ul class="guide-list"><li>까마귀 정수·열매를 사용하고 자원을 수집하세요.</li><li>모아둔 팔콘 퀘스트 보상을 받으세요.<small class="bonus">↳ 체력이 드는 퀘스트·전투는 화요일 03:00 ~ 화요일 07:00에 진행하면 서바이벌 점수도 챙길 수 있어요. 보상 수령만으로는 체력이 소모되지 않아요.</small></li><li>항독소는 개인 보상까지 점수가 부족할 때만 필요한 만큼 사용하세요.<small class="bonus">↳ 월요일 11:00 ~ 월요일 15:00 또는 화요일 07:00 ~ 화요일 11:00 추천. 목요일 영웅 성장에 쓸 만큼은 남겨두세요.</small></li></ul><h3>이거는 아껴둬요!!</h3><ul class="guide-list save"><li>완공된 건물이 있다면, 포장은 화요일에 뜯기!!</li><li>까마귀 장비 상자는 열지 말고 수요일까지 모아두세요.</li><li>항독소는 목요일 영웅 성장에 쓸 만큼 아껴두세요.</li></ul></section>
+<section class="step-section guild-day"><div class="section-heading"><span>02</span><h2>화요일 · 건설과 모집</h2></div><p class="period">화요일 11:00 ~ 수요일 11:00 전까지</p><h3>할 일</h3><ul class="guide-list"><li>건설 가속을 사용하고, 완공된 건물의 포장을 뜯으세요.<small class="bonus">↳ 화요일 11:00 ~ 화요일 15:00 또는 수요일 07:00 ~ 수요일 11:00에 진행하면 서바이벌 점수도 함께 챙길 수 있어요.</small></li><li>비밀 퀘스트·마차 파견·생존자 모집을 진행하세요.</li></ul><h3>이거는 아껴둬요!!</h3><ul class="guide-list save"><li>팔콘 퀘스트는 완료해두고, 보상은 수요일 11:00 이후에 받으세요.</li><li>까마귀 장비 상자는 열지 말고 수요일 길드전 시작 후 여세요.</li><li>항독소는 목요일까지 모아두세요.</li></ul><p class="optional">여유가 있다면 체력이 드는 퀘스트·전투는 화요일 23:00 ~ 수요일 03:00에 진행하세요. 이 시간은 서바이벌용이며, 화요일 길드전과 동시 점수를 뜻하지는 않아요.</p></section>
+<section class="step-section guild-day"><div class="section-heading"><span>03</span><h2>수요일 · 연구와 까마귀 장비</h2></div><p class="period">수요일 11:00 ~ 목요일 11:00 전까지</p><h3>할 일</h3><ul class="guide-list"><li>연구 스크롤·연구 가속을 사용하고, 연구를 완료해 기술 전투력을 올리세요.<small class="bonus">↳ 연구 가속·완료는 수요일 15:00 ~ 수요일 19:00 추천.</small></li><li>까마귀 장비 상자를 열고, 모아둔 팔콘 퀘스트 보상을 받으세요.<small class="bonus">↳ 체력이 드는 팔콘 퀘스트는 수요일 19:00 ~ 수요일 23:00에 진행하세요. 저장한 보상을 받는 것과는 별개예요.</small></li></ul><h3>이거는 아껴둬요!!</h3><ul class="guide-list save"><li>까마귀 정수·열매는 다음 월요일까지 모아두세요.</li><li>항독소는 목요일까지 아껴두세요.</li></ul></section>
+<section class="step-section guild-day"><div class="section-heading"><span>04</span><h2>목요일 · 영웅 성장</h2></div><p class="period">목요일 11:00 ~ 금요일 11:00 전까지</p><h3>할 일</h3><ul class="guide-list"><li>영웅조각·항독소·스킬뱃지·모집권을 사용하세요.<small class="bonus">↳ 항독소·모집권은 목요일 19:00 ~ 목요일 23:00 추천. 영웅조각·스킬뱃지는 목요일 길드전 시간 안에 사용하세요.</small></li><li>팔콘 퀘스트는 완료하되, 보상은 받지 않고 남겨두세요.<small class="bonus">↳ 체력이 드는 퀘스트·전투는 목요일 15:00 ~ 목요일 19:00에 진행하면 서바이벌 점수를 챙길 수 있어요.</small></li></ul><h3>이거는 아껴둬요!!</h3><ul class="guide-list save"><li>완료한 팔콘 퀘스트 보상은 금요일 11:00 이후에 받으세요.</li></ul></section>
+<section class="step-section guild-day"><div class="section-heading"><span>05</span><h2>금요일 · 병력 훈련과 전쟁 준비</h2></div><p class="period">금요일 11:00 ~ 토요일 11:00 전까지</p><h3>할 일</h3><ul class="guide-list"><li>병사를 훈련하고 훈련 가속을 사용하세요.<small class="bonus">↳ 금요일 23:00 ~ 토요일 03:00 추천. 훈련·승급 자체의 점수 조건은 이벤트 화면에서 확인하세요.</small></li><li>건설 가속을 사용하고 완공된 건물의 포장을 뜯으세요.<small class="bonus">↳ 금요일 19:00 ~ 금요일 23:00 추천.</small></li><li>연구 가속을 사용하고 연구를 완료하세요.<small class="bonus">↳ 토요일 03:00 ~ 토요일 07:00 추천.</small></li><li>모아둔 팔콘 퀘스트 보상을 받으세요.<small class="bonus">↳ 체력이 드는 팔콘 퀘스트는 금요일 11:00 ~ 금요일 15:00 또는 토요일 07:00 ~ 토요일 11:00에 진행하세요.</small></li></ul><h3>이거는 아껴둬요!!</h3><ul class="guide-list save"><li>토요일 전투에 쓸 병력을 미리 준비하고, 불필요한 교전으로 소모하지 마세요.</li></ul></section>
+<section class="step-section guild-day"><div class="section-heading"><span>06</span><h2>토요일 · 교전과 병력 보존</h2></div><p class="period">토요일 11:00 ~ 일요일 11:00 전까지</p><h3>할 일</h3><ul class="guide-list"><li>길드 지시에 맞춰 전투에 참여하세요. 병사 처치·전사로 점수를 얻지만, 점수만을 위해 병력을 잃지는 마세요.</li><li>비밀 퀘스트와 마차 파견을 진행하고, 필요한 치료에 치료 가속을 사용하세요.</li><li>건설·훈련·연구 가속은 필요한 성장과 회복에 사용하세요.<small class="bonus">↳ 건설 가속: 토요일 15:00 ~ 토요일 19:00 / 훈련 가속: 토요일 19:00 ~ 토요일 23:00 / 연구 가속: 토요일 23:00 ~ 일요일 03:00 추천.</small></li></ul><h3>이거는 아껴둬요!!</h3><ul class="guide-list save"><li>방어가 어렵다면 보호막을 준비하고, 다음 전투를 위한 병력을 지키세요.</li></ul><p class="optional">체력이 드는 퀘스트·전투를 따로 할 때는 일요일 03:00 ~ 일요일 07:00에 서바이벌 점수를 챙길 수 있어요.</p></section>
+<section class="step-section guild-day"><div class="section-heading"><span>준비</span><h2>일요일 · 다음 길드전 준비</h2></div><p class="period">일요일 11:00 ~ 월요일 11:00 전까지</p><h3>할 일</h3><ul class="guide-list"><li>길드전이 없는 날입니다. 다음 주에 쓸 재료를 준비하세요.</li></ul><h3>이거는 아껴둬요!!</h3><ul class="guide-list save"><li>완공된 건물의 포장은 화요일까지 남겨두세요.</li></ul></section>
+</article><footer class="site-footer">LAST ASYLUM · SERVER #295 · 6ON GUILD GUIDE</footer></main></body></html>
